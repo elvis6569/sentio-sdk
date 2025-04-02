@@ -148,7 +148,7 @@ export class ${contract.name}ProcessorTemplate extends BaseProcessorTemplate<${c
   export function get${contract.name}Contract(chainId: EthChainId, address: string): ${contract.name}ContractView {
     let contract = getContractByABI("${contract.name}", address, chainId) as ${contract.name}ContractView
     if (!contract) {
-      const rawContract = ${contract.name}__factory.connect(address, getProvider(chainId))
+      const rawContract = ${contract.name}__factory.connect(address, getProvider(chainId as any))
       contract = new ${contract.name}ContractView(rawContract)
       addContractByABI("${contract.name}", address, chainId, contract)
     }
