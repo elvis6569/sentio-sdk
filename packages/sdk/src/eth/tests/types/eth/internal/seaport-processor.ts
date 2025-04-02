@@ -1651,7 +1651,10 @@ export function getSeaportContract(
     chainId,
   ) as SeaportContractView;
   if (!contract) {
-    const rawContract = Seaport__factory.connect(address, getProvider(chainId as any));
+    const rawContract = Seaport__factory.connect(
+      address,
+      getProvider(chainId as any),
+    );
     contract = new SeaportContractView(rawContract);
     addContractByABI("Seaport", address, chainId, contract);
   }
