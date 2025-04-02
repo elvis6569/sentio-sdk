@@ -3873,7 +3873,10 @@ export function getPythContract(
 ): PythContractView {
   let contract = getContractByABI("Pyth", address, chainId) as PythContractView;
   if (!contract) {
-    const rawContract = Pyth__factory.connect(address, getProvider(chainId as any));
+    const rawContract = Pyth__factory.connect(
+      address,
+      getProvider(chainId as any),
+    );
     contract = new PythContractView(rawContract);
     addContractByABI("Pyth", address, chainId, contract);
   }
